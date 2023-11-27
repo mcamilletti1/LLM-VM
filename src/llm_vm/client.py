@@ -33,7 +33,7 @@ class Client:
         complete: The Anarchy completion endpoint giving access to a specified LLM
     """
 
-    def __init__(self, big_model = default_big_model, small_model =default_small_model,big_model_config={},small_model_config={}):
+    def __init__(self, big_model = default_big_model, small_model =default_small_model,big_model_config=None,small_model_config=None):
         """
         This __init__ function allows the user to specify which LLM they want to use upon instantiation.
 
@@ -47,6 +47,8 @@ class Client:
         Example:
             >>> client = Client(big_model = 'neo')
         """
+        big_model_config = {} if big_model_config is None else big_model_config
+        small_model_config = {} if small_model_config is None else small_model_config
         self.teacher = load_model_closure(big_model)(**big_model_config)
         self.student = load_model_closure(small_model)(**small_model_config)
 
