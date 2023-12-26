@@ -65,8 +65,7 @@ def use_tool(
 
     # print_big(tool_args, "ARGS")
     request_function = None
-    method = tool['method'].upper()
-    if method == "PUT":
+    if (method := tool['method'].upper()) == "PUT":
         request_function = requests.put
     elif method == "POST":
         request_function = requests.post

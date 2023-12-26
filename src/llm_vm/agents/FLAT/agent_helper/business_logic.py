@@ -208,9 +208,8 @@ def promptf(
     if "dynamic_params" not in best_tool:
         best_tool["dynamic_params"] = {}
 
-    dynamic_params_to_fill = len(best_tool["dynamic_params"].keys())
     # only try to guess the "dynamic_params" if we have any
-    if dynamic_params_to_fill == 0:
+    if (dynamic_params_to_fill := len(best_tool["dynamic_params"].keys())) == 0:
         tool_input = {}
     else:
         # Try more than once to get the right input.
@@ -226,8 +225,7 @@ def promptf(
             )
             price_accumulator += price
 
-            filled_dynamic_params = len(tool_input.keys())
-            if filled_dynamic_params == dynamic_params_to_fill:
+            if (filled_dynamic_params := len(tool_input.keys())) == dynamic_params_to_fill:
                 break
 
         # If, besides all attempts, we still don't have the right input...

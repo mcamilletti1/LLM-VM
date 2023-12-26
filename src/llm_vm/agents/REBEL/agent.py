@@ -507,8 +507,7 @@ class Agent:
 
         answer_in_memory = memory_check(mem, question)
         self.price += answer_in_memory[0]
-        answer_in_memory = answer_in_memory[1]
-        if answer_in_memory:
+        if answer_in_memory := answer_in_memory[1]:
             prompt = MSG("system", "You are a good and helpful bot" + self.bot_str)
             prompt += MSG(
                 "user",

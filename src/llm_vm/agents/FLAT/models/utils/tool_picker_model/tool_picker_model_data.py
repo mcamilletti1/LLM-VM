@@ -29,8 +29,7 @@ def __get_toolpicker_model(tools_input_model: ToolpickerInputModel) -> Toolpicke
     for t in tools_input_model["data"]:
         rand_value = randrange(0, len(tools_input_model["data"]))
         answer_key = t["answer"]
-        answer_value = ALL_TOOLS_MAP[answer_key].value if answer_key in ALL_TOOLS_MAP else None
-        if (answer_value == None):
+        if ((answer_value := ALL_TOOLS_MAP[answer_key].value if answer_key in ALL_TOOLS_MAP else None) == None):
             raise Exception("Invalid tool name/value: " + answer_key)
 
         # tool_id_to_use = __use_tool(answer_value, rand_value) if answer_value > 0 else answer_value

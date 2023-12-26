@@ -63,8 +63,7 @@ class Client:
         #     return self.teacher.generate(prompt, max_len,**kwargs)
 
         def CALL_SMALL(prompt, max_len=256, **kwargs):
-            small_model_filename = kwargs.get('small_model_filename', None)
-            if small_model_filename is not None:
+            if (small_model_filename := kwargs.get('small_model_filename', None)) is not None:
                 self.student.load_finetune(small_model_filename)
 
             return self.student.generate(prompt, max_len,**kwargs)
