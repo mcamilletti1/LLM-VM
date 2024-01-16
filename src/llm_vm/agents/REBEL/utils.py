@@ -206,7 +206,7 @@ def tool_api_call(self, tool, gpt_suggested_input, question, memory, facts, quer
     if self.verbose > -1:
         print_op("ARGS: ", tool_args)
 
-    resp = (requests.get if tool["method"] == "GET" else requests.post)(**tool_args)
+    resp = (requests.get if tool["method"] == "GET" else requests.post)(**tool_args, timeout=60)
 
     # print_op("FINAL URL: (" + tool["method"] + ") ", resp.url)
 
