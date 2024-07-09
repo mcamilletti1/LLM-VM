@@ -8,6 +8,7 @@ import pickle
 import llm_vm.config as conf
 from llm_vm.guided_completion import RegexCompletion, ChoicesCompletion, TypeCompletion, GrammarCompletion
 from transformers import AutoTokenizer
+import fickling
 
 class DataSynthesis:
     def __init__(self, variance, examples_to_generate):
@@ -33,7 +34,7 @@ class DataSynthesis:
         
         if os.path.isfile(conf.settings.data_gen_file):
             new_file = open(conf.settings.data_gen_file,"rb")
-            return list(pickle.load(new_file))
+            return list(fickling.load(new_file))
         datapoints = []
         final_prompt = '{"prompt": "' +prompt+'"  , "response": "' +response+'" }'
         final_prompt = "Generate 1 json similar to the one below. \n" + final_prompt
