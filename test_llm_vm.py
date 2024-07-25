@@ -12,5 +12,5 @@ json_payload = {"prompt": "what is the economic situation in canada?",
                 # "finetune": True,
                 }
 
-response = requests.post(url, data=json.dumps(json_payload))
+response = requests.post(url, data=json.dumps(json_payload), timeout=60)
 print(response.text, file=sys.stderr)
