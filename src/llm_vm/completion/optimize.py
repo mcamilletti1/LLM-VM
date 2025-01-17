@@ -16,6 +16,7 @@ from llm_vm.guided_completion import RegexCompletion, ChoicesCompletion, TypeCom
 import llm_vm.completion.data_synthesis as data_synthesis
 import inspect
 from transformers import AutoTokenizer
+import fickling
 
 
 job_id = None # we want to be able to cancel a fine_tune if you kill the program
@@ -64,7 +65,7 @@ class LocalEphemeral:
 
     def load_data(self,file):
         #using pickle files right now, in the future we will have to use databases
-        self.training_store = pickle.load(file)
+        self.training_store = fickling.load(file)
 
     def store_data(self,file):
          #using pickle files right now, in the future we will have to use databases
